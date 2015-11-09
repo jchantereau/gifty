@@ -11,10 +11,85 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109125408) do
+ActiveRecord::Schema.define(version: 20151109153159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bar_categories", force: :cascade do |t|
+    t.integer  "bar_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "bar_categories", ["bar_id"], name: "index_bar_categories_on_bar_id", using: :btree
+  add_index "bar_categories", ["category_id"], name: "index_bar_categories_on_category_id", using: :btree
+
+  create_table "bars", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bars", ["city_id"], name: "index_bars_on_city_id", using: :btree
+
+  create_table "bookings", force: :cascade do |t|
+    t.date     "ends_on"
+    t.string   "message"
+    t.string   "code"
+    t.boolean  "complete"
+    t.integer  "gift_id"
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bookings", ["friend_id"], name: "index_bookings_on_friend_id", using: :btree
+  add_index "bookings", ["gift_id"], name: "index_bookings_on_gift_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.integer  "bar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "gifts", ["bar_id"], name: "index_gifts_on_bar_id", using: :btree
+
+  create_table "partners", force: :cascade do |t|
+    t.integer  "bar_id"
+    t.string   "iban"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "partners", ["bar_id"], name: "index_partners_on_bar_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,9 +104,23 @@ ActiveRecord::Schema.define(version: 20151109125408) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "address"
+    t.integer  "partner_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["partner_id"], name: "index_users_on_partner_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bar_categories", "bars"
+  add_foreign_key "bar_categories", "categories"
+  add_foreign_key "bars", "cities"
+  add_foreign_key "bookings", "friends"
+  add_foreign_key "bookings", "gifts"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "gifts", "bars"
+  add_foreign_key "partners", "bars"
+  add_foreign_key "users", "partners"
 end
