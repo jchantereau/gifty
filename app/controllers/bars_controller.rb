@@ -3,10 +3,7 @@ class BarsController < ApplicationController
   before_action :find_bar, only: [:show, :edit, :update]
 
   def index
-    @bars = Bar.all
-    unless @city.nil?
-      @bars = @city.bars.all
-    end
+    @bars = @city.bars.all
   end
 
   def show
