@@ -1,6 +1,8 @@
-<div class="banner text-center" style="background-image:url('images/cities/paris')">
+<div class="banner text-center" style="background-image: url('https://unsplash.it/1000/500?image=0')">
   <div class="banner-gradient"></div>
   <div class="banner-content">
-    <h2><%= city.name %></h2>
+    <h1><%= city.name %></h1>
   </div>
+  <%= link_to "", city_bars_path(city), class: 'banner-link' %>
 </div>
+
