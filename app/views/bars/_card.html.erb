@@ -1,9 +1,9 @@
 <div class="card">
   <span class="card-bg" style="background-image:url('http://41.media.tumblr.com/47c939349e3c8204bae36aa8e84f4bb0/tumblr_nvoubcjOlw1slhhf0o1_1280.jpg')"></span>
   <span class="card-gradient"></span>
-  <span class="card-category"><%= bar.city %></span>
+  <span class="card-category"><%= bar.city.name %></span>
   <span class="card-text">
     <h2><%= bar.name %></h2>
   </span>
-  <a href="#" class="card-link"></a>
+  <%= link_to "", bar_path(bar), class: "card-link" %>
 </div>
