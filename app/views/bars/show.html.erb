@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h1><%= @bar.name %></h1>
+      <p><%= @bar.address %></p>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <%= render "carousel" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <% @bar.gifts.each do |gift| %>
+            <%= render 'gifts', gift: gift %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
