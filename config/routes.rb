@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users, only: [ :show, :edit, :update ]
   root to: 'pages#home'
+  devise_for :users
+  resources :users, only: [ :edit, :update ]
 
   resources :cities, only: [ :index ] do
     resources :bars, only: [ :index ]
