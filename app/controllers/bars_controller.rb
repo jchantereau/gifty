@@ -8,6 +8,10 @@ class BarsController < ApplicationController
     end
   end
 
+  def show
+    @gifts = []
+  end
+
   private
 
   def set_city
