@@ -1,15 +1,20 @@
-index.html.erb
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8">
 
-      <%= render "searchbar" %>
 
       <div class="row">
-        <% @vinyls.each do |vinyl| %>
+        <% @bars.each do |bar| %>
           <div class="col-xs-12 col-sm-4">
-            <%= render "card", vinyl: vinyl %>
+            <%= render "card", bar: bar %>
           </div>
         <% end %>
       </div>
     </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <div id="map" style="width: 450px; height: 800px;"></div>
+    </div>
+
+  </div>
+</div>

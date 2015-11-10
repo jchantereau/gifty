@@ -1,4 +1,4 @@
-class BarController < ApplicationController
+class BarsController < ApplicationController
   before_action :set_city
 
   def index
