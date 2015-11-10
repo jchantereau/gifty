@@ -5,4 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bookings
+
+  has_attached_file :picture,
+    styles: { medium: "300x300>", thumb: "100x100>" }
+
+  validates_attachment_content_type :picture,
+    content_type: /\Aimage\/.*\z/
+
+  def put_picture(size)
+    if self.picture.present?
+      self.picture(size)
+    else
+      "avatar.png"
+    end
+  end
 end

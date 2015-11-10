@@ -4,6 +4,7 @@
       <h1>Edit your profile</h1>
 
       <%= simple_form_for(@user) do |f| %>
+        <%= f.input :picture %>
         <%= f.input :name %>
         <%= f.input :address %>
         <%= f.input :phone_number %>
