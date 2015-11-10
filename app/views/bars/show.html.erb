@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <h1><%= @bar.name %></h1>
-      <p><%= @bar.address %></p>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="row text-center">
+        <div class="col-xs-12">
+          <h1><%= @bar.name %></h1>
+          <p><%= @bar.address %></p>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-xs-12">
@@ -12,9 +16,15 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <% @bar.gifts.each do |gift| %>
-            <%= render 'gifts', gift: gift %>
+
+          <%= form_tag new_bar_booking_path(@bar), method: :get do %>
+            <% @bar.gifts.each do |gift| %>
+              <%= radio_button_tag :gift, gift.id %>
+              <%= label_tag gift.name %>
+            <% end %>
+            <%= submit_tag :send_a_gift %>
           <% end %>
+
         </div>
       </div>
     </div>
