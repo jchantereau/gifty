@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
   before_action :find_gift, only: [ :new ]
 
+  def index
+  end
+
   def new
     @booking = Booking.new(gift: @gift)
   end
@@ -11,7 +14,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to
       flash.notice = "Your gift has been successfully booked"
       redirect_to bookings_path
     else
