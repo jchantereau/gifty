@@ -4,13 +4,13 @@
 # Examples:
 #
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Gift.destroy_all
-Bar.destroy_all
-City.destroy_all
+# Gift.destroy_all
+# Bar.destroy_all
+# City.destroy_all
 
-cities = City.create([{ name: 'Paris' }, { name: 'Lyon' }, { name: 'Lille' }])
-bars = Bar.create([{ name: 'Le Perchoir', city: cities.first, address: '14 rue Crespin du Gast, 75011' }, { name: 'La Fine Mousse', city: cities.first, address: '4 bis avenue Jean Aicard, 75011' }, { name: 'Le Magnum', city: cities[1], address: '57 rue Masséna, 59800'}])
+# cities = City.create([{ name: 'Paris' }, { name: 'Lyon' }, { name: 'Lille' }])
+# bars = Bar.create([{ name: 'Le Perchoir', city: cities.first, address: '14 rue Crespin du Gast, 75011' }, { name: 'La Fine Mousse', city: cities.first, address: '4 bis avenue Jean Aicard, 75011' }, { name: 'Le Magnum', city: cities[1], address: '57 rue Masséna, 59800'}])
 
-bars.each do |bar|
-  Gift.create([{name: "Verre de vin", bar: bar, price: 5}, {name: "Pinte", bar: bar, price: 5}, {name: "Cocktail", bar: bar, price: 5}])
-end
+# bars.each do |bar|
+#   Gift.create([{name: "Verre de vin", bar: bar, price: 5}, {name: "Pinte", bar: bar, price: 5}, {name: "Cocktail", bar: bar, price: 5}])
+# end
