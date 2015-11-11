@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+
+      <% current_user.bookings.each do |booking| %>
+        <div class="col-xs-12">
+          <div class="bg-grey">
+            <p><strong>1 <%= booking.gift.name %> @<%= booking.gift.bar.name %> (<%= booking.gift.price %>€)</strong></p>
+            <p>pour <%= booking.friend_name %> le <%= booking.created_at %></p>
+            <p>message: "<%= booking.message %>"</p>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
