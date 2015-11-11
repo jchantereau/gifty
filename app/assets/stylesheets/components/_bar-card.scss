@@ -1,19 +1,32 @@
-.bkg-form h1 {
+.bar-card h1 {
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   font-size: 30px;
+  color: $brand-color;
 }
 
-.bkg-form {
+.bar-card p {
+  font-size: 14px;
+}
+
+.bar-card {
   background-size: cover;
   background-color: rgba(225,225, 225,0.9);
+  border-radius: 3px;
   color: #383838;
-  padding: 10px;
+  padding: 2px;
   position: relative;
   z-index: 0;
+  margin-top: 10px;
 }
 
-.bkg-form-content {
+.bar-card-content {
   position: relative;
   z-index: 2;
   padding: 10px;
 }
+
+.bar-card-description {
+  padding: 10px;
+}
+
+
