@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
       <div class="row text-center">
         <div class="col-xs-12">
           <h4>1 <%= @gift.name %> @<%= @gift.bar.name %></h4>
@@ -10,12 +11,18 @@
 
       <div class="row">
         <div class="col-xs-12">
+        <%= simple_form_for [@gift.bar, @booking] do |f| %>
+        <%= f.error_notification %>
+        <%= f.hidden_field :gift_id %>
 
-
-
+        <%#= f.input :name, placeholder: "friend name" %>
+        <%#= f.input :email, placeholder: "friend email" %>
+        <%= f.button :submit %>
+        <% end %>
 
         </div>
       </div>
+
     </div>
   </div>
 </div>

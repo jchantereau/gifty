@@ -19,8 +19,8 @@
 
           <%= form_tag new_bar_booking_path(@bar), method: :get do %>
             <% @bar.gifts.each do |gift| %>
-              <%= radio_button_tag :gift, gift.id %>
-              <%= label_tag gift.name %>
+              <%= radio_button_tag :gift_id, gift.id %>
+              <%= label_tag :gift_id, gift.name, for: "gift_id_#{gift.id}" %>
             <% end %>
             <%= submit_tag :send_a_gift %>
           <% end %>

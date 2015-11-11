@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111094139) do
+ActiveRecord::Schema.define(version: 20151111104139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20151111094139) do
     t.boolean  "complete"
     t.integer  "gift_id"
     t.integer  "user_id"
-    t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "friend_name"
+    t.string   "friend_email"
+    t.string   "friend_phone_number"
   end
 
-  add_index "bookings", ["friend_id"], name: "index_bookings_on_friend_id", using: :btree
   add_index "bookings", ["gift_id"], name: "index_bookings_on_gift_id", using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
@@ -63,14 +64,6 @@ ActiveRecord::Schema.define(version: 20151111094139) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "gifts", force: :cascade do |t|
@@ -122,7 +115,6 @@ ActiveRecord::Schema.define(version: 20151111094139) do
   add_foreign_key "bar_categories", "bars"
   add_foreign_key "bar_categories", "categories"
   add_foreign_key "bars", "cities"
-  add_foreign_key "bookings", "friends"
   add_foreign_key "bookings", "gifts"
   add_foreign_key "bookings", "users"
   add_foreign_key "gifts", "bars"
