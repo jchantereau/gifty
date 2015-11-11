@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
   before_action :find_gift, only: [ :new ]
 
+  def index
+  end
+
   def new
     @booking = Booking.new(gift: @gift)
   end
