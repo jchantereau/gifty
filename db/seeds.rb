@@ -15,5 +15,6 @@
 #   Gift.create([{name: "Verre de vin", bar: bar, price: 5}, {name: "Pinte", bar: bar, price: 5}, {name: "Cocktail", bar: bar, price: 5}])
 # end
 
+User.destroy_all
 u = User.create(email: 'jchantereau@gmail.com', password: 'password', admin: true)
-u.save
+u.save!
