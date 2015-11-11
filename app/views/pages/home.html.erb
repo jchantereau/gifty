@@ -1,2 +1,56 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="banner text-center" style="background-image: url('https://unsplash.it/1000/500?image=0')">
+        <div class="banner-gradient"></div>
+        <div class="banner-content">
+          <h1>GIFTY</h1>
+          <p>Offer a drink to your friends in a few clicks</p>
+          <% if user_signed_in? %>
+            <%= link_to "OFFER DRINK", cities_path, class: "btn btn-primary btn-lg" %>
+          <% else %>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+              TRY IT
+            </button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h2 class="text-center">Cities</h2>
+    <% @cities.each do |city| %>
+      <div class="col-xs-12 col-md-4">
+        <%= render "cities/banner", city: city %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h2 class="text-center">Most popular bars</h2>
+    <% @bars.each do |bar| %>
+      <div class="col-xs-12 col-sm-3">
+        <%= render "bars/card", bar: bar %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade text-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create account</h4>
+      </div>
+      <div class="modal-body">
+        <%= render "devise/shared/registration" %>
+      </div>
+    </div>
+  </div>
+</div>
