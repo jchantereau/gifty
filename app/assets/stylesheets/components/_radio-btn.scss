@@ -1,0 +1,28 @@
+.radio-button {
+  margin: 5px 0;
+}
+
+.radio-button input[type="radio"] {
+  display: none;
+}
+
+.radio-button label {
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  margin: 0;
+}
+
+.radio-button input[type=radio]:checked + label {
+  background-color: $brand-color;
+  color: #fafaf4;
+}
+
+/* Foundation overrides */
+.row {
+  padding: 0 20px;
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+  margin: 0;
+}
