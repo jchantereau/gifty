@@ -14,3 +14,6 @@
 # bars.each do |bar|
 #   Gift.create([{name: "Verre de vin", bar: bar, price: 5}, {name: "Pinte", bar: bar, price: 5}, {name: "Cocktail", bar: bar, price: 5}])
 # end
+
+u = User.create(email: 'jchantereau@gmail.com', password: 'password', admin: true)
+u.save
