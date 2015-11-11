@@ -14,7 +14,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to
       flash.notice = "Your gift has been successfully booked"
       redirect_to bookings_path
     else
