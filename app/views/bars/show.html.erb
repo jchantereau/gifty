@@ -1,40 +1,49 @@
-<div class="container">
+<div class="container-fluid" style="background-image: url('http://punchbowlsocial.com/wp-content/uploads/2015/07/HIMYM-Toast.jpg')">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 bg-grey">
-      <div class="row text-center">
-        <div class="col-xs-12">
-          <h1><%= @bar.name %></h1>
-          <p><%= @bar.address %></p>
-        </div>
-      </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <%= render "carousel" %>
-        </div>
-      </div>
+      <div class="bar-card text-center">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <p><%= @bar.description %></p>
-        </div>
-      </div>
+          <div class="bar-card-content">
 
-      <div class="row">
-        <div class="col-xs-12">
-
-          <%= form_tag new_bar_booking_path(@bar), method: :get do %>
-            <% @bar.gifts.each do |gift| %>
-              <div class="col-xs-12 radio-button">
-                <%= radio_button_tag :gift_id, gift.id %>
-                <%= label_tag :gift_id, gift.name, for: "gift_id_#{gift.id}" %>
+            <div class="row text-center">
+              <div class="col-xs-12">
+                <h1><%= @bar.name %></h1>
+                <p><%= @bar.address %></p>
               </div>
-            <% end %>
-              <%= submit_tag :send_a_gift, class: "btn btn-primary btn-lg col-xs-6 col-xs-offset-3 text-center" %>
-          <% end %>
+            </div>
 
-        </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render "carousel" %>
+              </div>
+              <div class="col-xs-12 text-center bar-card-description">
+                <p><%= @bar.description %></p>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-xs-12">
+
+                <%= form_tag new_bar_booking_path(@bar), method: :get do %>
+                  <% @bar.gifts.each do |gift| %>
+                    <div class="col-xs-12 radio-button">
+                      <%= radio_button_tag :gift_id, gift.id %>
+                      <%= label_tag :gift_id, "#{gift.name}" + " - " + "#{gift.price}" + " € ", for: "gift_id_#{gift.id}" %>
+                    </div>
+                  <% end %>
+                    <%= submit_tag :send_a_gift, class: "btn btn-primary btn-lg col-xs-6 col-xs-offset-3 text-center" %>
+                <% end %>
+
+              </div>
+            </div>
+
+          </div>
+
       </div>
+
+
     </div>
   </div>
 </div>
