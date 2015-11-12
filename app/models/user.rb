@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  after_create :send_welcome_email
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -43,5 +46,9 @@ class User < ActiveRecord::Base
     avatar_url = URI.parse(uri)
     avatar_url.scheme = 'https'
     avatar_url.to_s
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end
