@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="50" y="95" name="cities">
+</datatypes><table x="149" y="516" name="cities">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -48,7 +48,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="338" y="74" name="bars">
+<table x="352" y="351" name="bars">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -69,7 +69,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="873" y="87" name="categories">
+<table x="68" y="87" name="categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -80,7 +80,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="114" y="284" name="drinks">
+<table x="547" y="258" name="gifts">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -98,7 +98,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="456" y="210" name="bookings">
+<table x="827" y="102" name="bookings">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -114,23 +114,28 @@
 <row name="consumed" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="drink_id" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="drinks" row="id" />
-</row>
 <row name="user_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="users (devise)" row="id" />
 </row>
-<row name="friend_id" null="1" autoincrement="0">
+<row name="drink_id" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="friends" row="id" />
+<default>NULL</default><relation table="gifts" row="id" />
 </row>
+<row name="friend_name" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="friend_email" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="friend_phone_number" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="165" y="453" name="users (devise)">
+<table x="499" y="16" name="users (devise)">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -154,24 +159,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="776" y="445" name="friends">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="name" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="email" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="phone_number" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="616" y="77" name="bars_categories">
+<table x="66" y="253" name="bars_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -187,7 +175,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="840" y="258" name="partners">
+<table x="266" y="23" name="partners">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -195,6 +183,26 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="bars" row="id" />
 </row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="817" y="477" name="pictures">
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="imageable_id" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="gifts" row="id" />
+<relation table="bars" row="id" />
+<relation table="cities" row="id" />
+</row>
+<row name="imageable_type" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
