@@ -1,0 +1,12 @@
+<h2>Coupon confirmation</h2>
+
+<%= @booking.message %>
+
+<%= form_tag coupon_confirmation_path(@booking.token) do %>
+  <div>
+    <%= label_tag :voucher %><br/>
+    <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher', 'data-validate-url' => validate_coupon_path(@booking.token) %>
+    <span class="js-voucher-status fa"/>
+  </div>
+  <%= submit_tag "Confirm" %>
+<% end %>
