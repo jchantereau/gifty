@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-
     @booking.user = current_user
 
     if @booking.save
@@ -18,7 +17,7 @@ class BookingsController < ApplicationController
       redirect_to bookings_path
     else
       @gift = @booking.gift
-      flash[:alert] = "Something went wrong with your booking, please check if you are logged in"
+      flash[:alert] = "Something went wrong with your booking"
       render :new
     end
   end

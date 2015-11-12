@@ -1,5 +1,5 @@
 <div class="card">
-  <span class="card-bg" style="background-image:url('<%= bar.picture %>')"></span>
+  <span class="card-bg" style="background-image:url('<%= bar.pictures.first.picture.url(:medium) if bar.pictures.present? %>')"></span>
   <span class="card-gradient"></span>
   <span class="card-category"><%= bar.city.name %></span>
   <span class="card-text">

@@ -10,6 +10,14 @@
               <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
               <p><i class="fa fa-eur"></i> <%= booking.gift.price %>€</p>
               <p><i class="fa fa-paper-plane"> </i> "<%= booking.message %>"</p>
+              <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
+              <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
+              <p><i class="fa fa-lock"></i> <%= booking.code %> </p>
+              <% if booking.complete %>
+                <p><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+              <% else %>
+                <p><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</p>
+              <% end %>
             </span>
           </div>
         </div>
