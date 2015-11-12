@@ -1,18 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <% current_user.bookings.each do |booking| %>
+
+      <% current_user.bookings.reverse_order.each do |booking| %>
         <div class="col-xs-12">
           <div class="bkg-card">
             <strong class="title"><%= booking.gift.name %> pour <%= booking.friend_name %></strong>
             <span class="details">
-              <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %></p>
-              <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
-              <p><i class="fa fa-eur"></i> <%= booking.gift.price %>€</p>
-              <p><i class="fa fa-paper-plane"> </i> "<%= booking.message %>"</p>
               <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
               <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
-              <p><i class="fa fa-lock"></i> <%= booking.code %> </p>
+              <p><i class="fa fa-lock"></i> <%= booking.voucher %> </p>
               <% if booking.complete %>
                 <p><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
               <% else %>

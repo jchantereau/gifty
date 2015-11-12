@@ -10,8 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
-ActiveRecord::Schema.define(version: 20151112133911) do
+ActiveRecord::Schema.define(version: 20151112144726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,18 +39,20 @@ ActiveRecord::Schema.define(version: 20151112133911) do
   create_table "bookings", force: :cascade do |t|
     t.date     "ends_on"
     t.string   "message"
-    t.string   "code"
-    t.boolean  "complete"
+    t.string   "voucher"
+    t.boolean  "complete",            default: false
     t.integer  "gift_id"
     t.integer  "user_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "friend_name"
     t.string   "friend_email"
     t.string   "friend_phone_number"
+    t.string   "token"
   end
 
   add_index "bookings", ["gift_id"], name: "index_bookings_on_gift_id", using: :btree
+  add_index "bookings", ["token"], name: "index_bookings_on_token", unique: true, using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|

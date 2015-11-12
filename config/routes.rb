@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'pages#home'
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [ :edit, :update ]
 
@@ -14,8 +16,16 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [ :index, :show ]
 
-  namespace :partners do
-    resources :bookings, only: [ :show, :index ]
+  # namespace :partners do
+  #   resources :bookings, only: [ :show, :index ]
+  # end
+
+  resources :coupons, only: [:show] do
+    member do
+      get :validate
+    end
+
+    resource :confirmation, only: [:new, :create], controller: 'coupons/confirmation'
   end
 
 
