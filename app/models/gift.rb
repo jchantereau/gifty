@@ -3,7 +3,5 @@ class Gift < ActiveRecord::Base
 
   has_many :bookings
 
-  validates_presence_of :bar
-
-  validates_presence_of :name, :price
+  validates_presence_of :bar, :name, :price
 end
