@@ -5,5 +5,4 @@ class Category < ActiveRecord::Base
   has_many :bar_categories
 
   validates :name, inclusion: { in: CATEGORIES }
-
 end
