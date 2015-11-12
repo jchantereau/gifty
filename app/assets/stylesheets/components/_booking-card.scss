@@ -1,0 +1,25 @@
+.bkg-card {
+  position:relative;
+  margin:0px auto 10px;
+  display:block;
+  text-decoration:none;
+  background-color:#fafafa;
+  color:#131313;
+  border-radius: 10px;
+  border-left: 10px solid $brand-color;
+  }
+
+  .title {
+    display:block;
+    padding:10px 0 0 20px;
+    font-size:1.25em;
+  }
+
+  .details {
+    display:block;
+    clear:both;
+    padding:5px 0 1px 23px;
+    font-size:0.85em;
+    color: grey;
+  }
+
