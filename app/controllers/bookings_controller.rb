@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash.notice = "Your gift has been successfully booked"
+      BookingMailer.creation_confirmation(@booking).deliver_now
       redirect_to bookings_path
     else
       @gift = @booking.gift

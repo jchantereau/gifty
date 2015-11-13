@@ -1,0 +1,11 @@
+Hi <%= @booking.friend_name %>,<br>
+
+Your friend <%= @booking.user.name %> just offered you a drink. <br>
+
+Message: "<%= @booking.message %>" <br>
+
+Here is the code to validate your drink: <strong><%= @booking.voucher %></strong> <br>
+
+<%= link_to "Click here", coupon_url(@booking.token) %> to enjoy it! <br>
+
+Gifty team,
