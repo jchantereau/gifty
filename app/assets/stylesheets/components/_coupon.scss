@@ -1,19 +1,19 @@
 .coupon {
   position:relative;
   margin:0px auto 20px;
-  display:block;
-  text-decoration:none;
-  background-color:#fafafa;
-  color:$brand-color;
+  display: block;
+  text-decoration: none;
+  background-color: #fafafa;
+  color: $brand-color;
   border-radius: 10px;
   border-left: 10px solid $brand-color;
   max-width: 400px;
   }
 
   .coupon-title {
-    display:block;
-    padding:10px 0 0 20px;
-    font-size:1.25em;
+    display: block;
+    padding: 10px 0 0 20px;
+    font-size: 1.25em;
   }
 
   .coupon-details {
