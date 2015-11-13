@@ -1,12 +1,19 @@
-<h2>Coupon confirmation</h2>
+<h2 class="text-center">Coupon confirmation</h2>
 
-<%= @booking.message %>
+<div class="coupon text-center">
+  <strong class="coupon-title">1 <%= @booking.gift.name %> @<%= @booking.gift.bar.name %></strong>
+  <span class="coupon-details">
+    <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.address %></p>
+    <p><i class="fa fa-lock"></i> <%= @booking.voucher %>
+</div>
 
-<%= form_tag coupon_confirmation_path(@booking.token) do %>
-  <div>
-    <%= label_tag :voucher %><br/>
-    <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher', 'data-validate-url' => validate_coupon_path(@booking.token) %>
-    <span class="js-voucher-status fa"/>
-  </div>
-  <%= submit_tag "Confirm" %>
-<% end %>
+<div class="text-center">
+  <%= form_tag coupon_confirmation_path(@booking.token) do %>
+    <div>
+      <p><strong>The coupon code is entered by the bar tender, below.</strong></p>
+      <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher coupon-field text-center', 'data-validate-url' => validate_coupon_path(@booking.token), placeholder: '_ _ _ _ _ _' %>
+      <span class="js-voucher-status fa"/>
+    </div>
+    <%= submit_tag "Confirm", class:"btn btn-primary" %>
+  <% end %>
+</div>
