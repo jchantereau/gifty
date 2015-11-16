@@ -2,7 +2,9 @@
   <div class="bar-card-content">
     <h1><%= @bar.name %></h1>
     <p><%= @bar.address %></p>
-      <%= image_tag @bar.pictures.first.picture.url(:large), class:"col-xs-12" %>
+    <div class="col-xs-12">
+      <%= render "carousel" %>
+    </div>
     <div class="col-xs-12">
       <p class="bar-card-description"><%= @bar.description %></p>
     </div>
