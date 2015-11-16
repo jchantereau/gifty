@@ -1,15 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 text-center">
-      <h1>Edit your profile</h1>
-      <%= simple_form_for(@user) do |f| %>
-        <%= f.input :picture %>
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :phone_number %>
-        <%= f.button :submit, "Update", class: "btn-action" %>
-      <% end %>
-      <%= link_to "Change email or password", edit_user_registration_path %>
+<div class="bg-grey">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="white-card text-center">
+        <h1>Edit your profile</h1>
+        <%= simple_form_for(@user) do |f| %>
+          <%= image_tag current_user.put_picture(:thumb) %>
+          <%= f.input :picture, label: 'Edit your picture' %>
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :phone_number %>
+          <%= f.button :submit, "Update", class: "btn-action" %>
+        <% end %>
+        <%= link_to "Change email or password", edit_user_registration_path %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
