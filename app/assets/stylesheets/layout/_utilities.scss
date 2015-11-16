@@ -33,3 +33,16 @@
   margin: 20px auto;
   border-radius: 2px;
 }
+
+
+// override bootstrap row and container - media queries {
+@media (max-width: $screen-xs) {
+  .container-fluid {
+    padding: 0;
+  }
+}
+  @media (min-width: $screen-xs) {
+  .row {
+    padding: 0 20px;
+  }
+}
