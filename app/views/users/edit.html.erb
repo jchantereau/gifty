@@ -7,7 +7,11 @@
         <%= simple_form_for(@user) do |f| %>
           <%= image_tag current_user.put_picture(:thumb) %>
           <%= f.input :picture, label: 'Edit your picture' %>
-          <%= f.input :name %>
+          <% if current_user.first_name? %>
+            <%= f.input :name, input_html: { value: current_user.first_name } %>
+          <% else %>
+            <%= f.input :name, input_html: { value: current_user.email[/[^@]+/] } %>
+          <% end %>
           <%= f.input :address %>
           <%= f.input :phone_number %>
           <%= f.button :submit, "Update", class: "btn-action" %>

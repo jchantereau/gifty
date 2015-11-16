@@ -1,17 +1,23 @@
-<div class="bkg-form text-center">
-    <div class="bkg-form-content">
-        <h1>1 <%= @gift.name %></h1>
-        <h1>@<%= @gift.bar.name %></h1>
+<div class="bg-grey">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <div class="white-card text-center">
+        <h2>1 <%= @gift.name %> <br>
+        @<%= @gift.bar.name %></h2>
         <%= simple_form_for [@gift.bar, @booking] do |f| %>
         <%= f.error_notification %>
         <%= f.hidden_field :gift_id %>
-        <%= f.input :friend_name, placeholder: "friend name", label: false %>
-        <%= f.input :friend_email, placeholder: "friend email", label: false %>
-        <%= f.input :friend_phone_number, placeholder: "friend phone number", label: false %>
+        <%= f.input :friend_name, placeholder: "friend's name", label: false %>
+        <%= f.input :friend_email, placeholder: "friend's email", label: false %>
+        <%= f.input :friend_phone_number, placeholder: "friend's phone number", label: false %>
         <%= f.input :message, :as => :text, placeholder: "Add a message for your friend", input_html: {}, label: false %>
-        <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+        <%= f.button :submit, 'Confirm', class: "btn btn-primary btn-lg" %>
         <% end %>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 
