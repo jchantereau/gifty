@@ -1,25 +1,22 @@
-<div class="bar-card text-center">
-  <div class="bar-card-content">
-    <h1><%= @bar.name %></h1>
-    <p><%= @bar.address %></p>
-    <div class="col-xs-12">
-      <%= render "carousel" %>
-    </div>
-    <div class="col-xs-12">
-      <p class="bar-card-description"><%= @bar.description %></p>
-    </div>
-    <div class="text-center">
-      <%= form_tag new_bar_booking_path(@bar), method: :get do %>
-        <% @bar.gifts.each do |gift| %>
-          <div class="radio-button">
-            <%= radio_button_tag :gift_id, gift.id %>
-            <%= label_tag :gift_id, "#{gift.name} - #{gift.price} €", for: "gift_id_#{gift.id}" %>
-          </div>
+<div class="bg-grey">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 nopadding">
+      <div class="bar-card text-center">
+        <h1><%= @bar.name %></h1>
+        <p><%= @bar.address %></p>
+        <%= render "carousel" %>
+        <p class="bar-card-description"><%= @bar.description %></p>
+        <%= form_tag new_bar_booking_path(@bar), method: :get do %>
+          <% @bar.gifts.each do |gift| %>
+            <div class="radio-button">
+              <%= radio_button_tag :gift_id, gift.id %>
+              <%= label_tag :gift_id, "#{gift.name} - #{gift.price} €", for: "gift_id_#{gift.id}" %>
+            </div>
+          <% end %>
+          <%= submit_tag "Select", class: "btn btn-primary btn-lg" %>
         <% end %>
-        <%= submit_tag "Select", class: "btn btn-primary btn-lg" %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 

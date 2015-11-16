@@ -1,3 +1,11 @@
+.bar-card {
+  background: white;
+  border-radius: 2px;
+  padding: 10px 0px;
+  color: #383838;
+  margin: 20px auto;
+}
+
 .bar-card h1 {
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   font-size: 30px;
@@ -8,29 +16,10 @@
   font-size: 14px;
 }
 
-.bar-card {
-  background-size: cover;
-  background-color: rgba(225,225, 225,0.9);
-  border-radius: 3px;
-  color: #383838;
-  padding: 2px;
-  position: relative;
-  z-index: 0;
-  margin-top: 10px;
-  max-width: 600px;
-  margin:0px auto 20px;
-}
-
-.bar-card-content {
-  position: relative;
-  z-index: 2;
-  padding: 10px;
-}
-
 .bar-card-description {
   padding: 20px;
-  background-color: white;
-  // border: 1px solid grey;
+  background-color: #F6F6F6;
 }
+
 
 

@@ -10,7 +10,7 @@
 
 .radio-button label {
   width: 100%;
-  background-color: white;
+  background-color: #F6F6F6;
   padding: 10px;
   margin: 0;
 }
@@ -21,9 +21,9 @@
 }
 
 /* Foundation overrides */
-.row {
-  padding: 0 20px;
-}
+// .row {
+//   padding: 0 20px;
+// }
 
 input[type="checkbox"] + label, input[type="radio"] + label {
   margin: 0;
