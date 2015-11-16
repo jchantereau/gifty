@@ -1,24 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-
-      <% current_user.bookings.reverse_order.each do |booking| %>
-        <div class="col-xs-12">
-          <div class="coupon">
-            <strong class="coupon-title"><%= booking.gift.name %> pour <%= booking.friend_name %></strong>
-            <span class="coupon-details">
-              <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
-              <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
-              <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
-              <% if booking.complete %>
-                <p><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
-              <% else %>
-                <p><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</p>
-              <% end %>
-            </span>
+<div class="bg-grey">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <% if current_user.bookings.empty? %>
+          <div class="white-card text-center">
+            <h2>Your friends' beer is empty :(</h2>
+            <br>
+            <br>
+            <br>
+            <p><%= image_tag 'cheers.png' %></p>
+            <br>
+            <br>
+            <br>
+            <p class="text-center"><%= link_to 'Offer a drink', cities_path, class: 'btn btn-primary' %></p>
           </div>
-        </div>
-      <% end %>
+        <% else %>
+          <div class="coupon-container">
+          <% current_user.bookings.reverse_order.each do |booking| %>
+            <div class="coupon">
+              <strong class="coupon-title">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
+              <span class="coupon-details">
+                <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
+                <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
+                <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
+                <% if booking.complete %>
+                  <p><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+                <% else %>
+                  <p><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</p>
+                <% end %>
+              </span>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
