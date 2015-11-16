@@ -10,6 +10,10 @@
   padding-bottom: 5em;
 }
 
+.owl-buttons {
+  display: none;
+}
+
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
@@ -34,6 +38,9 @@
   border-radius: 2px;
 }
 
+.nopadding {
+   padding: 0 !important;
+}
 
 // override bootstrap row and container - media queries {
 @media (max-width: $screen-xs) {

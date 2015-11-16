@@ -3,3 +3,18 @@
     display: none;
   }
 }
+
+.owl-pagination {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .owl-page>span {
+    background: #FFFFFF !important;
+  }
+}
+
+.owl-item {
+  img { width: 100% }
+}
