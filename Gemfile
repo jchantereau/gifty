@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "rails_admin"
 
+gem 'owlcarousel-rails'
+
 gem "letter_opener", group: :development
 
 group :development, :test do
