@@ -15,7 +15,7 @@
   background: #4a4a4a;
 }
 .bg-grey {
-  background: #aeaeae;
+  background: #dbdbdb;
 }
 .bg-blue {
   background: #00a3e1;
@@ -25,4 +25,11 @@
 }
 .bg-brand-color {
   background: $brand-color;
+}
+
+.white-card {
+  background: white;
+  padding: 15px 15px;
+  margin: 20px auto;
+  border-radius: 2px;
 }
