@@ -1,28 +1,36 @@
-<h1 class="text-center"><%= @booking.user.name %> offered you drink!</h1>
+<div class="bg-grey">
+  <div class="container-fluid">
+      <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <div class="white-card coupon-card">
+          <h1 class="text-center"><%= @booking.user.name %> offered you drink!</h1>
+          <div class="coupon-message">
+            <% if @booking.user.picture.present? %>
+              <p class= "text-center"><%= image_tag @booking.user.picture.url(:thumb), class:"user-pic" %></p>
+            <% else %>
+            <% end %>
+            <% unless @booking.message == nil %>
+              <p class="text-center"><i class="fa fa-quote-left"></i> <%= @booking.message %> <i class="fa fa-quote-right"></i></p>
+            <% else %>
+            <% end %>
+          </div>
+          <div class="coupon text-center">
+            <strong class="coupon-title">1 <%= @booking.gift.name %> @<%= @booking.gift.bar.name %></strong>
+            <span class="coupon-details">
+              <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.address %></p>
+              <p><i class="fa fa-lock"></i> <%= @booking.voucher %>
+              <% if @booking.complete %>
+                <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+              <% else %>
+                <p><i class="fa fa-times"></i> You did not enjoy it yet !</p>
+              <% end %>
+            </span>
+          </div>
 
-<% if @booking.user.picture.present? %>
-  <p class= "text-center"><%= image_tag @booking.user.picture.url(:thumb), class:"user-pic" %></p>
-<% else %>
-<% end %>
-<% unless @booking.message == nil %>
-  <p class="text-center"><i class="fa fa-quote-left"></i> <%= @booking.message %> <i class="fa fa-quote-right"></i></p>
-<% else %>
-<% end %>
-
-<div class="coupon text-center">
-  <strong class="coupon-title">1 <%= @booking.gift.name %> @<%= @booking.gift.bar.name %></strong>
-  <span class="coupon-details">
-    <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.name %> - <%= @booking.gift.bar.address %></p>
-    <p><i class="fa fa-lock"></i> <%= @booking.voucher %>
-    <% if @booking.complete %>
-      <p><i class="fa fa-check"></i> You already enjoyed it !</p>
-    <% else %>
-      <p><i class="fa fa-times"></i> You did not enjoy it yet !</p>
-    <% end %>
-  </span>
+          <div class="text-center">
+            <%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="text-center">
-  <%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %>
-</div>
-

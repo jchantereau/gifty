@@ -1,3 +1,13 @@
+.coupon-card h1 {
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-size: 30px;
+  color: $brand-color;
+  }
+
+.coupon-message {
+    padding: 10px;
+  }
+
 .coupon {
   position:relative;
   margin:0px auto 20px;
@@ -5,7 +15,7 @@
   text-decoration: none;
   background-color: #fafafa;
   color: $brand-color;
-  border-radius: 10px;
+  border-radius: 2px;
   border-left: 10px solid $brand-color;
   max-width: 400px;
   }
@@ -32,9 +42,8 @@
     background: white;
     border: 1px solid grey ;
     border-radius: 3px;
-    min-width: 200px;
     height: 50px;
-    font-size: 30px;
+    min-width: 150px;
     margin-bottom: 10px;
     margin-top: 10px;
   }
