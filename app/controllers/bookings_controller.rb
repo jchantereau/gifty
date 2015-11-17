@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :find_gift, only: [ :new ]
 
   def index
+    @bookings = current_user.bookings
   end
 
   def new
@@ -21,6 +22,10 @@ class BookingsController < ApplicationController
       flash[:alert] = "Something went wrong with your booking"
       render :new
     end
+  end
+
+  def gifts_received
+    @bookings = Booking.where(friend_email: current_user.email)
   end
 
   private

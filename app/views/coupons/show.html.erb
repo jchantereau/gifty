@@ -27,7 +27,8 @@
           </div>
 
           <div class="text-center">
-            <%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %>
+            <p><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %></p>
+            <p><%= link_to 'Signup and save your drink', new_user_registration_path(user_email: @booking.friend_email), class:"btn btn-primary" %></p>
           </div>
         </div>
       </div>
