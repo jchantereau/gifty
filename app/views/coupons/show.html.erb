@@ -2,7 +2,7 @@
   <div class="container-fluid">
       <div class="col-xs-12 col-md-4 col-md-offset-4">
         <div class="white-card coupon-card">
-          <h1 class="text-center"><%= @booking.user.name %> offered you drink!</h1>
+          <h1 class="text-center"><%= @booking.user.name %> offered you a drink!</h1>
           <div class="coupon-message">
             <% if @booking.user.picture.present? %>
               <p class= "text-center"><%= image_tag @booking.user.picture.url(:thumb), class:"user-pic" %></p>
@@ -18,17 +18,39 @@
             <span class="coupon-details">
               <p><i class="fa fa-map-marker"></i> <%= link_to @booking.gift.bar.address, "http://maps.google.com/?q=#{@booking.gift.bar.address}", :target => "_blank" %></p>
               <p><i class="fa fa-lock"></i> <%= @booking.voucher %>
-              <% if @booking.complete %>
-                <p><i class="fa fa-check"></i> You already enjoyed it !</p>
-              <% else %>
-                <p><i class="fa fa-times"></i> You did not enjoy it yet !</p>
-              <% end %>
+                <% if  @booking.still_valid == false %>
+                  <% if @booking.complete %>
+                    <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+                  <% else %>
+                    <p class="coupon-expired"><strong><i class="fa fa-times"></i> The coupon expired </strong></p>
+                  <% end %>
+                <% else %>
+                  <% if @booking.complete %>
+                    <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+                  <% else %>
+                    <dl>
+                      <dt><i class="fa fa-times"></i> You did not enjoy it yet !</dt>
+                      <dd>validate until <%= @booking.ends_on %></dd>
+                    </dl>
+                  <% end %>
+                <% end %>
             </span>
           </div>
 
-          <div class="text-center">
-            <%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %>
-          </div>
+          <% if  @booking.still_valid %>
+            <div class="text-center">
+              </br>
+              <p><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %></p>
+              </br>
+              <p><%= link_to 'Signup and save your drink', new_user_registration_path(user_email: @booking.friend_email), class:"btn btn-primary" %></p>
+            </div>
+          <% else %>
+            <div class="text-center">
+              </br>
+              <p><%= link_to 'Signup', new_user_registration_path(user_email: @booking.friend_email), class:"btn btn-primary" %></p>
+            </div>
+          <% end %>
+
         </div>
       </div>
     </div>

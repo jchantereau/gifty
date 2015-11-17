@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112144726) do
+ActiveRecord::Schema.define(version: 20151117171427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20151112144726) do
     t.string   "friend_email"
     t.string   "friend_phone_number"
     t.string   "token"
+    t.boolean  "still_valid",         default: true
   end
 
   add_index "bookings", ["gift_id"], name: "index_bookings_on_gift_id", using: :btree

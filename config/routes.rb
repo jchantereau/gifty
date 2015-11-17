@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: [ :edit, :update ]
 
   resources :cities, only: [ :index ] do
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [ :index, :show ]
 
+  get 'gifts' => "bookings#gifts_received"
+
   # namespace :partners do
   #   resources :bookings, only: [ :show, :index ]
   # end
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
     member do
       get :validate
     end
-
     resource :confirmation, only: [:new, :create], controller: 'coupons/confirmation'
   end
 

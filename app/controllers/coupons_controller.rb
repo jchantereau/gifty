@@ -2,6 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_booking
 
   def show
+    @booking.check_date_validity
   end
 
   def validate
