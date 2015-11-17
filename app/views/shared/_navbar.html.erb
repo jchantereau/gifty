@@ -15,7 +15,12 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to bookings_path do %>
-                <i class="fa fa-calendar-check-o"></i> <%= t ".bookings", default: "My Gifts" %>
+                <i class="fa fa-calendar-check-o"></i> <%= t ".bookings", default: "Gifts sent" %>
+                <% end %>
+            </li>
+            <li>
+              <%= link_to gifts_path do %>
+                <i class="fa fa-calendar-check-o"></i> <%= t ".bookings", default: "Gifts received" %>
                 <% end %>
             </li>
             <li>
