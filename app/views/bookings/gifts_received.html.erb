@@ -23,7 +23,7 @@
                 <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %></p>
                 <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
 
-                <% if  (Time.now > booking.ends_on) %>
+                <% if  booking.still_valid == false %>
                   <% if booking.complete %>
                     <p><i class="fa fa-check"></i> You already enjoyed it !</p>
                   <% else %>

@@ -18,7 +18,7 @@
             <span class="coupon-details">
               <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.address %></p>
               <p><i class="fa fa-lock"></i> <%= @booking.voucher %>
-                <% if  (Time.now > @booking.ends_on) %>
+                <% if  @booking.still_valid == false %>
                   <% if @booking.complete %>
                     <p><i class="fa fa-check"></i> You already enjoyed it !</p>
                   <% else %>
@@ -37,7 +37,7 @@
             </span>
           </div>
 
-          <% if  (Time.now < @booking.ends_on) %>
+          <% if  @booking.still_valid %>
             <div class="text-center">
               </br>
               <p><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %></p>

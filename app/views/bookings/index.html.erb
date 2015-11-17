@@ -23,7 +23,7 @@
                 <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
                 <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
                 <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
-                <% if  (Time.now > booking.ends_on) %>
+                <% if  booking.still_valid == false %>
                   <% if booking.complete %>
                     <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
                   <% else %>
