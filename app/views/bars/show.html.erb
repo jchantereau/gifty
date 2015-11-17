@@ -14,7 +14,7 @@
               <%= label_tag :gift_id, "<span class='gift-name'>#{gift.name}</span> <span class='gift-price'>#{gift.price} €</span>".html_safe, for: "gift_id_#{gift.id}" %>
             </div>
           <% end %>
-          <%= submit_tag "Select", class: "btn btn-primary btn-lg" %>
+          <%= submit_tag "Select", class: "action-btn" %>
         <% end %>
       </div>
     </div>
