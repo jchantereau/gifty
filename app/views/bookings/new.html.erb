@@ -10,7 +10,7 @@
         <%= f.hidden_field :gift_id %>
         <%= f.input :friend_name, placeholder: "friend's name", label: false %>
         <%= f.input :friend_email, placeholder: "friend's email", label: false %>
-        <%= f.input :friend_phone_number, placeholder: "friend's phone number", label: false %>
+        <div class="inline-blocks"><p>- OR -</p><%= f.input :friend_phone_number, placeholder: "friend's phone number", label: false %></div>
         <%= f.input :message, :as => :text, placeholder: "Add a message for your friend", input_html: {}, label: false %>
         <%= f.button :submit, 'Confirm', class: "btn btn-primary btn-lg" %>
         <% end %>

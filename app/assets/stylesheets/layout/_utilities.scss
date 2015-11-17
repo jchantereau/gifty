@@ -19,7 +19,7 @@
   background: #4a4a4a;
 }
 .bg-grey {
-  background: #e4e4e4;
+  background: #f6f6f6;
 }
 .bg-blue {
   background: #00a3e1;
@@ -48,7 +48,7 @@
     padding: 0;
   }
 }
-  @media (min-width: $screen-xs) {
+@media (min-width: $screen-xs) {
   .row {
     padding: 0 20px;
   }
