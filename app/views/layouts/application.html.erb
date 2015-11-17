@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class='<%= "#{params[:controller]}-#{params[:action]}" %>'>
   <head>
     <title>Gifty App</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   </head>
-  <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+  <body class="Site">
+    <main class="Site-content">
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    </main>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= yield :after_js %>

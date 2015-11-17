@@ -19,3 +19,14 @@
   z-index: 2;
   padding: 10px;
 }
+
+.inline-blocks {
+  display: flex;
+  align-items: center;
+  p {
+    flex: 0 0 15%;
+  }
+  .form-group {
+    width: 100%
+  }
+}

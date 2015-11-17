@@ -10,6 +10,29 @@
   padding-bottom: 5em;
 }
 
+.action-btn {
+  display: inline-block;
+  background-color: rgba(250, 250, 250, 0.1);
+  color: $brand-color;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin-bottom: 0;
+  border-radius: 2px;
+  border: 2px solid;
+  text-align: center;
+  vertical-align: middle;
+  &:hover {
+    text-decoration: none;
+    background-color: rgba(250, 250, 250, 0.5);
+  }
+}
+
+.user-form {
+  padding: 0px 50px;
+}
+
+
 .owl-buttons {
   display: none;
 }
@@ -19,7 +42,7 @@
   background: #4a4a4a;
 }
 .bg-grey {
-  background: #e4e4e4;
+  background: #f6f6f6;
 }
 .bg-blue {
   background: #00a3e1;
@@ -48,7 +71,7 @@
     padding: 0;
   }
 }
-  @media (min-width: $screen-xs) {
+@media (min-width: $screen-xs) {
   .row {
     padding: 0 20px;
   }

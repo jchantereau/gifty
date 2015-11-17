@@ -1,11 +1,9 @@
 <h1 class="text-center">SELECT YOUR FRIEND'S CITY</h1>
-<div class="container-fluid">
-  <div class="row">
+  <div class='banners'>
     <% @cities.each do |city| %>
-      <div class="col-xs-12 col-md-4">
+      <div class="banner-container">
         <%= render "banner", city: city %>
       </div>
     <% end %>
-    </div>
   </div>
 </div>

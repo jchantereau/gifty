@@ -1,13 +1,33 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .card {
   position: relative;
   height: 175px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   color: white;
-  margin: 20px auto;
 }
+
+.card-container {
+  padding: 20px;
+  // large
+  flex: 0 0 33%;
+
+  // medium
+  @media (max-width: $screen-md) { flex: 0 0 50% }
+
+  //small
+  @media (max-width: $screen-xs) {
+    flex: 0 0 100%;
+    padding: 0;
+  }
+}
+
 .card-bg{
   background-size: cover;
-  border-radius: 3px;
+  border-radius: 2px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -15,7 +35,7 @@
 }
 .card-gradient {
   background-image: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 80%);
-  border-radius: 3px;
+  border-radius: 2px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -54,7 +74,4 @@
   z-index:2;
   background: black;
   opacity: 0;
-  &:hover{
-    opacity: 0.1;
-  }
 }
