@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.ends_on = Time.now + 90.days
 
     if @booking.save
       flash.notice = "Your gift has been successfully booked"
