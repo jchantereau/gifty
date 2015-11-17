@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = current_user.bookings
+    @bookings.each {|b| b.check_date_validity}
   end
 
   def new
@@ -27,6 +28,7 @@ class BookingsController < ApplicationController
 
   def gifts_received
     @bookings = Booking.where(friend_email: current_user.email)
+    @bookings.each {|b| b.check_date_validity}
   end
 
   private
@@ -38,5 +40,4 @@ class BookingsController < ApplicationController
   def find_gift
     @gift = Gift.find(params[:gift_id])
   end
-
 end

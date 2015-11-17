@@ -23,10 +23,21 @@
                 <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %> - <i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %> - <i class="fa fa-eur"></i> <%= booking.gift.price %></p>
                 <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
                 <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
-                <% if booking.complete %>
-                  <p><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+                <% if  booking.still_valid == false %>
+                  <% if booking.complete %>
+                    <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+                  <% else %>
+                    <p class="coupon-expired"><strong><i class="fa fa-times"></i> The coupon expired </strong></p>
+                  <% end %>
                 <% else %>
-                  <p><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</p>
+                  <% if booking.complete %>
+                    <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+                  <% else %>
+                    <dl>
+                      <dt><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</dt>
+                      <dd>validate until <%= booking.ends_on %></dd>
+                    </dl>
+                  <% end %>
                 <% end %>
               </span>
             </div>

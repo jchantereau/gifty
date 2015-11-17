@@ -22,16 +22,29 @@
               <span class="coupon-details">
                 <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %></p>
                 <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
-                <% if booking.complete %>
-                  <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+
+                <% if  booking.still_valid == false %>
+                  <% if booking.complete %>
+                    <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+                  <% else %>
+                    <p class="coupon-expired"><strong><i class="fa fa-times"></i> The coupon expired </strong></p>
+                  <% end %>
                 <% else %>
-                  <p><i class="fa fa-times"></i> You did not enjoy it yet !</p>
+                  <% if booking.complete %>
+                    <p><i class="fa fa-check"></i> You already enjoyed it !</p>
+                  <% else %>
+                    <dl>
+                      <dt><i class="fa fa-times"></i> You did not enjoy it yet !</dt>
+                      <dd>validate until <%= booking.ends_on %></dd>
+                    </dl>
+                    <div class="text-center">
+                    <p><%= link_to 'Drink it', new_coupon_confirmation_path(booking.token), class:"btn btn-primary" %></p>
+                    </br>
+                    </div>
+                  <% end %>
                 <% end %>
+
               </span>
-              <div class="text-center">
-                <p><%= link_to 'Drink it', new_coupon_confirmation_path(booking.token), class:"btn btn-primary" %></p>
-              </div>
-            </br>
             </div>
           <% end %>
           </div>
