@@ -6,6 +6,7 @@
 
 .radio-button input[type="radio"] {
   display: none;
+  align-items: center;
 }
 
 .radio-button label {
@@ -13,6 +14,7 @@
   background-color: #F6F6F6;
   padding: 10px;
   margin: 0;
+  display: flex;
 }
 
 .radio-button input[type=radio]:checked + label {
@@ -27,4 +29,8 @@
 
 input[type="checkbox"] + label, input[type="radio"] + label {
   margin: 0;
+}
+
+.gift-price {
+  margin-left: auto;
 }
