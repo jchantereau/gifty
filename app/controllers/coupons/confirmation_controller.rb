@@ -4,16 +4,22 @@ module Coupons
     before_action :check_voucher, only: [:create]
 
     def new
+      @booking.check_date_validity
     end
 
     def create
-      @booking.complete = true
-
-      if @booking.save
-        flash[:notice] = "Voucher used!"
-        redirect_to root_path
+      @booking.check_date_validity
+      if @booking.still_valid
+        @booking.complete = true
+        if @booking.save
+          flash[:notice] = "Voucher used!"
+          redirect_to root_path
+        else
+          flash[:alert] = "Unable to use voucher."
+          render :new
+        end
       else
-        flash[:alert] = "Unable to use voucher."
+        flash[:alert] = "Your coupon has expired the #{@booking.ends_on}."
         render :new
       end
     end

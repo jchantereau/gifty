@@ -15,6 +15,13 @@ class Booking < ActiveRecord::Base
     self.where(attribute_name => code).exists?
   end
 
+  def check_date_validity
+    if self.ends_on.to_date < Time.now.to_date
+      self.still_valid = false
+      self.save
+    end
+  end
+
   private
 
   def create_token

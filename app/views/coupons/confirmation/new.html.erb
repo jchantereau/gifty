@@ -2,32 +2,33 @@
   <div class="container-fluid">
     <div class="col-xs-12 col-md-4 col-md-offset-4">
       <div class="white-card">
-        <% if  (Time.now <= @booking.ends_on) %>
-          <span class="text-center">
-          <p>1 - Go to <%= @booking.gift.bar.name %></p>
-          <p>2 - Present this coupon to the bar tender.</p>
-          <p>3 - Enjoy your <%= @booking.gift.name %>!</p>
-          </span>
-          </br>
-          <div class="coupon">
-            <strong class="coupon-title">1 <%= @booking.gift.name %> @<%= @booking.gift.bar.name %></strong>
-            <span class="coupon-details">
-              <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.address %></p>
-              <p><i class="fa fa-lock"></i> <%= @booking.voucher %></p>
-              <p><strong>validate until <%= @booking.ends_on %></strong></p>
-          </div>
-          <div class="text-center">
-          <%= form_tag coupon_confirmation_path(@booking.token) do %>
-            <div>
-              <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher coupon-field text-center', 'data-validate-url' => validate_coupon_path(@booking.token), placeholder: 'code' %>
-              <span class="js-voucher-status fa"/>
-            </div>
-            <%= submit_tag "Confirm", class:"btn btn-primary" %>
+        <span class="text-center">
+        <p>1 - Go to <%= @booking.gift.bar.name %></p>
+        <p>2 - Present this coupon to the bar tender.</p>
+        <p>3 - Enjoy your <%= @booking.gift.name %>!</p>
+        </span>
+        </br>
+        <div class="coupon">
+          <strong class="coupon-title">1 <%= @booking.gift.name %> @<%= @booking.gift.bar.name %></strong>
+          <span class="coupon-details">
+            <p><i class="fa fa-map-marker"></i> <%= @booking.gift.bar.address %></p>
+            <p><i class="fa fa-lock"></i> <%= @booking.voucher %></p>
+            <p><strong>validate until <%= @booking.ends_on %></strong></p>
+        </div>
+
+        <div class="text-center">
+          <% if  @booking.still_valid %>
+            <%= form_tag coupon_confirmation_path(@booking.token) do %>
+              <div>
+                <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher coupon-field text-center', 'data-validate-url' => validate_coupon_path(@booking.token), placeholder: 'code' %>
+                <span class="js-voucher-status fa"/>
+              </div>
+              <%= submit_tag "Confirm", class:"btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <p class="text-center coupon-expired"><strong><i class="fa fa-times"></i> Your coupon expired </strong></p>
           <% end %>
-          </div>
-        <% else %>
-          <p class="text-center coupon-expired"><strong><i class="fa fa-times"></i> Your coupon expired </strong></p>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
