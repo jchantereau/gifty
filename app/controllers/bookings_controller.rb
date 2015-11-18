@@ -1,9 +1,13 @@
 class BookingsController < ApplicationController
-  before_action :find_gift, only: [ :new ]
+  before_action :find_gift, only: [ :new, :create ]
 
   def index
     @bookings = current_user.bookings
     @bookings.each {|b| b.check_date_validity}
+  end
+
+  def show
+    @booking = Booking.where(state: 'paid').find(params[:id])
   end
 
   def new
@@ -11,8 +15,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+    gift_sku = @gift.sku
+    amount = @gift.price
+    state = 'pending'
+
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.status = "pending"
     @booking.ends_on = Time.now + 90.days
 
     if @booking.save
@@ -25,7 +34,7 @@ Click here: #{coupon_url(@booking.token)} to enjoy it!"
         blowerio = RestClient::Resource.new(ENV['BLOWERIO_URL'])
         blowerio['/messages'].post to: "+33#{@booking.friend_phone_number[1..9]}", message: message
       end
-      redirect_to bookings_path
+      redirect_to new_booking_payment_path(booking)
     else
       @gift = @booking.gift
       flash[:alert] = "Something went wrong with your booking"
@@ -41,7 +50,7 @@ Click here: #{coupon_url(@booking.token)} to enjoy it!"
   private
 
   def booking_params
-    params.require(:booking).permit(:message, :gift_id, :friend_name, :friend_email, :friend_phone_number)
+    params.require(:booking).permit(:message, :gift_id, :friend_name, :friend_email, :friend_phone_number, :gift_sku, :amount, :state)
   end
 
   def find_gift

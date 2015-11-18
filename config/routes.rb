@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'pages#home'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -14,7 +15,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :new, :create]
   end
 
-  resources :bookings, only: [ :index, :show ]
+  resources :bookings, only: [ :index, :show ] do
+    resources :payments, only: [:new, :create]
+  end
 
   get 'gifts' => "bookings#gifts_received"
 

@@ -23,6 +23,7 @@ gem "rails_admin"
 
 gem "coffee-script"
 gem 'money-rails'
+gem 'stripe'
 
 gem 'owlcarousel-rails'
 

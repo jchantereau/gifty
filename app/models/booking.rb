@@ -1,4 +1,7 @@
 class Booking < ActiveRecord::Base
+
+  monetize :amount_cents
+
   belongs_to :gift
   belongs_to :user
 
