@@ -18,7 +18,7 @@
           <div class="coupon-container">
           <% @bookings.reverse_order.each do |booking| %>
             <div class="coupon">
-              <strong class="coupon-title">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
+              <strong class="coupon-title text-center">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
               <span class="coupon-details">
                 <p>Purchased on the <%= booking.created_at.strftime("%d-%m-%y") %> at <%= booking.gift.bar.name %> for <%= booking.gift.price %> €</p>
                 <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
