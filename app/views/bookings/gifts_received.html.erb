@@ -4,7 +4,7 @@
       <div class="col-xs-12 col-md-6 col-md-offset-3">
         <% if @bookings.empty? %>
           <div class="white-card text-center">
-            <h2>You have no gifts</h2>
+            <h2>Your beer is empty :(</h2>
             <br>
             <br>
             <br>
@@ -18,9 +18,9 @@
           <div class="coupon-container">
           <% @bookings.reverse_order.each do |booking| %>
             <div class="coupon">
-              <strong class="coupon-title">A <%= booking.gift.name %> from <%= booking.user.name %></strong>
+              <strong class="coupon-title text-center">A <%= booking.gift.name %> from <%= booking.user.name %></strong>
               <span class="coupon-details">
-                <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at %></p>
+                <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at.strftime("%d-%m-%y") %></p>
                 <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
 
                 <% if  booking.still_valid == false %>
@@ -35,11 +35,10 @@
                   <% else %>
                     <dl>
                       <dt><i class="fa fa-times"></i> You did not enjoy it yet !</dt>
-                      <dd>validate until <%= booking.ends_on %></dd>
+                      <dd>valid until <%= booking.ends_on.strftime("%d-%m-%y") %></dd>
                     </dl>
                     <div class="text-center">
-                    <p><%= link_to 'Drink it', new_coupon_confirmation_path(booking.token), class: 'action-btn' %></p>
-                    </br>
+                    <p><%= link_to 'Drink it', new_coupon_confirmation_path(booking.token), class: 'action-btn-small' %></p>
                     </div>
                   <% end %>
                 <% end %>

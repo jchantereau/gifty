@@ -30,14 +30,14 @@
                   <% else %>
                     <dl>
                       <dt><i class="fa fa-times"></i> You did not enjoy it yet !</dt>
-                      <dd>validate until <%= @booking.ends_on %></dd>
+                      <dd>valid until <%= @booking.ends_on.strftime("%d-%m-%y") %></dd>
                     </dl>
                   <% end %>
                 <% end %>
             </span>
           </div>
 
-          <% if  @booking.still_valid %>
+          <% if @booking.still_valid %>
             <div class="text-center">
               </br>
               <span><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class: 'action-btn' %></span>

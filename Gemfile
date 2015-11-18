@@ -9,6 +9,7 @@ gem 'devise'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 gem 'omniauth-facebook'
+gem 'rest-client'
 
 gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
