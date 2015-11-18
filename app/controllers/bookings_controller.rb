@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     if @booking.save
       flash.notice = "Your gift has been successfully booked"
       BookingMailer.creation_confirmation(@booking).deliver_now
-      if @booking.friend_phone_number
+      if (@booking.friend_phone_number != "")
         message = "Hi #{@booking.friend_name}, your friend #{@booking.user.name} just offered you a drink.
 Here is the code for the bar tender: #{@booking.voucher}
 Click here: #{coupon_url(@booking.token)} to enjoy it!"
