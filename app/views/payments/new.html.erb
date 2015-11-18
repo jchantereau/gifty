@@ -1,4 +1,4 @@
-<h1>1 <%= @booking.gift_id.name %> for <%= @booking.friend_name %></h1>
+<h1>1 <%= @booking.gift.name %> for <%= @booking.friend_name %></h1>
 <%= form_tag booking_payments_path(@booking) do %>
   <article>
     <label class="amount">
@@ -9,7 +9,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-name="<%= @booking.gift_sku %>"
-    data-description="<%= @booking.gift_id.name %> @ <%= @booking.gift_id.bar.name %>"
+    data-description="<%= @booking.gift.name %> @ <%= @booking.gift.bar.name %>"
     data-amount="<%= @booking.amount_cents %>"
     data-currency="EUR"></script>
 <% end %>

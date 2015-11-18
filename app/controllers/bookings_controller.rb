@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
         @booking.user = current_user
         BookingMailer.creation_confirmation(@booking).deliver_now
         SmsSender.new(@booking, coupon_url(@booking.token)).send unless @booking.friend_phone_number.blank?
-        redirect_to new_booking_payment_path(booking)
+        redirect_to new_booking_payment_path(@booking)
       else
         session[:booking_id] = @booking.id
         redirect_to new_user_session_path
