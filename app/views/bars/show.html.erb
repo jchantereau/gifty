@@ -6,7 +6,7 @@
         <p><%= @bar.address %></p>
         <%= render "carousel" %>
         <p class="bar-card-description"><%= @bar.description %></p>
-        <h4>What you can offer...</h4>
+        <h4>Select a drink</h4>
         <%= form_tag new_bar_booking_path(@bar), method: :get do %>
           <% @bar.gifts.each do |gift| %>
             <div class="radio-button">
