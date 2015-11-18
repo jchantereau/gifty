@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117171427) do
+ActiveRecord::Schema.define(version: 20151118125647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 20151117171427) do
     t.string   "friend_phone_number"
     t.string   "token"
     t.boolean  "still_valid",         default: true
+    t.string   "state"
+    t.string   "gift_sku"
+    t.integer  "amount_cents",        default: 0,     null: false
+    t.json     "payment"
   end
 
   add_index "bookings", ["gift_id"], name: "index_bookings_on_gift_id", using: :btree
@@ -71,10 +75,11 @@ ActiveRecord::Schema.define(version: 20151117171427) do
 
   create_table "gifts", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price"
+    t.integer  "price_cents"
     t.integer  "bar_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "sku"
   end
 
   add_index "gifts", ["bar_id"], name: "index_gifts_on_bar_id", using: :btree

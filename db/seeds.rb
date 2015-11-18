@@ -118,7 +118,7 @@ end
 bars = Bar.all
 
 bars.each do |bar|
-  Gift.create([{name: "Glass of wine", bar: bar, price: 5},
-    {name: "Beer", bar: bar, price: 7},
-    {name: "Cocktail", bar: bar, price: 9}])
+  Gift.create([{sku: "wine-#{bar.name.parameterize}", name: "Glass of wine", bar: bar, price: 5},
+    {sku: "beer-#{bar.name.parameterize}", name: "Beer", bar: bar, price: 7},
+    {sku: "cocktail-#{bar.name.parameterize}", name: "Cocktail", bar: bar, price: 9}])
 end

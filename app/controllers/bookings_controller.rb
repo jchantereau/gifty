@@ -1,31 +1,40 @@
 class BookingsController < ApplicationController
-  before_action :find_gift, only: [ :new ]
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @bookings = current_user.bookings
     @bookings.each {|b| b.check_date_validity}
   end
 
+  def show
+    @booking = Booking.where(state: 'paid').find(params[:id])
+  end
+
   def new
-    @booking = Booking.new(gift: @gift)
+    @gift = Gift.find(params[:gift_id])
+    @booking = Booking.new(gift_id: params[:gift_id])
   end
 
   def create
+    @gift = Gift.find(params[:booking][:gift_id])
     @booking = Booking.new(booking_params)
-    @booking.user = current_user
+    @booking.gift = @gift
+    @booking.state = "pending"
+    @booking.amount = @gift.price
+    @booking.gift_sku = @gift.sku
     @booking.ends_on = Time.now + 90.days
 
     if @booking.save
       flash.notice = "Your gift has been successfully booked"
-      BookingMailer.creation_confirmation(@booking).deliver_now
-      if (@booking.friend_phone_number != "")
-        message = "Hi #{@booking.friend_name}, your friend #{@booking.user.name} just offered you a drink.
-Here is the code for the bar tender: #{@booking.voucher}
-Click here: #{coupon_url(@booking.token)} to enjoy it!"
-        blowerio = RestClient::Resource.new(ENV['BLOWERIO_URL'])
-        blowerio['/messages'].post to: "+33#{@booking.friend_phone_number[1..9]}", message: message
+      if user_signed_in?
+        @booking.user = current_user
+        BookingMailer.creation_confirmation(@booking).deliver_now
+        SmsSender.new(@booking, coupon_url(@booking.token)).send unless @booking.friend_phone_number.blank?
+        redirect_to new_booking_payment_path(@booking)
+      else
+        session[:booking_id] = @booking.id
+        redirect_to new_user_session_path
       end
-      redirect_to bookings_path
     else
       @gift = @booking.gift
       flash[:alert] = "Something went wrong with your booking"
@@ -41,10 +50,6 @@ Click here: #{coupon_url(@booking.token)} to enjoy it!"
   private
 
   def booking_params
-    params.require(:booking).permit(:message, :gift_id, :friend_name, :friend_email, :friend_phone_number)
-  end
-
-  def find_gift
-    @gift = Gift.find(params[:gift_id])
+    params.require(:booking).permit(:message, :friend_name, :friend_email, :friend_phone_number, :state)
   end
 end

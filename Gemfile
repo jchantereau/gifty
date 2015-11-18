@@ -21,6 +21,10 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem "rails_admin"
 
+gem "coffee-script"
+gem 'money-rails'
+gem 'stripe'
+
 gem 'owlcarousel-rails'
 
 gem "letter_opener", group: :development
