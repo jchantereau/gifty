@@ -12,7 +12,7 @@
             <br>
             <br>
             <br>
-            <p class="text-center"><%= link_to 'Offer a drink', cities_path, class: 'btn btn-primary' %></p>
+            <p class="text-center"><%= link_to 'Offer a drink', cities_path, class: 'action-btn' %></p>
           </div>
         <% else %>
           <div class="coupon-container">
@@ -35,7 +35,7 @@
                   <% else %>
                     <dl>
                       <dt><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</dt>
-                      <dd>validate until <%= booking.ends_on %></dd>
+                      <p><dd>Valid until <%= booking.ends_on.strftime("%d-%m-%y") %></dd></p>
                     </dl>
                   <% end %>
                 <% end %>

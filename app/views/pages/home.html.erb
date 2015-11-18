@@ -7,7 +7,7 @@
       <%= link_to "OFFER A DRINK", cities_path, class: "action-btn" %>
     <% else %>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="action-btn" data-toggle="modal" data-target="#myModal">
         TRY IT
       </button>
     <% end %>
@@ -37,7 +37,7 @@
 <!-- Modal -->
 <div class="modal fade text-center" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content user-form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Create account</h4>

@@ -40,14 +40,10 @@
           <% if  @booking.still_valid %>
             <div class="text-center">
               </br>
-              <p><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class:"btn btn-primary" %></p>
-              </br>
-              <p><%= link_to 'Signup and save your drink', new_user_registration_path(user_email: @booking.friend_email), class:"btn btn-primary" %></p>
-            </div>
+              <span><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class: 'action-btn' %></span>
+              <span><%= link_to 'Save drink', new_user_registration_path(user_email: @booking.friend_email), class: 'action-btn' %></span>
           <% else %>
-            <div class="text-center">
-              </br>
-              <p><%= link_to 'Signup', new_user_registration_path(user_email: @booking.friend_email), class:"btn btn-primary" %></p>
+              <p><%= link_to 'Signup', new_user_registration_path(user_email: @booking.friend_email), class: 'action-btn' %></p>
             </div>
           <% end %>
 
