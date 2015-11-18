@@ -4,34 +4,30 @@
     <h1>GIFTY</h1>
     <p>Offer a drink to your friends in a few clicks</p>
     <% if user_signed_in? %>
-      <%= link_to "OFFER A DRINK", cities_path, class: "action-btn" %>
+      <%= link_to "OFFER A DRINK", cities_path, class: "try-btn" %>
     <% else %>
       <!-- Button trigger modal -->
-      <button type="button" class="action-btn" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="try-btn" data-toggle="modal" data-target="#myModal">
         TRY IT
       </button>
     <% end %>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="row">
-    <h2 class="text-center">Cities</h2>
-    <% @cities.each do |city| %>
-      <div class="col-xs-12 col-md-4">
-        <%= render "cities/banner", city: city %>
-      </div>
-    <% end %>
-  </div>
+<h2 class="text-center">Cities</h2>
+<div class="banners">
+  <% @cities.each do |city| %>
+    <div class="banner-container">
+      <%= render "cities/banner", city: city %>
+    </div>
+  <% end %>
 </div>
-<div class="container">
-  <div class="row">
-    <h2 class="text-center">Most popular bars</h2>
-    <% @bars.each do |bar| %>
-      <div class="col-xs-12 col-sm-3">
-        <%= render "bars/card", bar: bar %>
-      </div>
-    <% end %>
-  </div>
+<h2 class="text-center">Most popular bars</h2>
+<div class="cards">
+  <% @bars.each do |bar| %>
+    <div class="card-container">
+      <%= render "bars/card", bar: bar %>
+    </div>
+  <% end %>
 </div>
 
 <!-- Modal -->

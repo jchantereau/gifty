@@ -36,7 +36,6 @@ class BookingsController < ApplicationController
         redirect_to new_user_session_path
       end
     else
-      raise
       @gift = @booking.gift
       flash[:alert] = "Something went wrong with your booking"
       render :new
