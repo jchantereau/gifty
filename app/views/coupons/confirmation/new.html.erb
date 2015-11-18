@@ -22,7 +22,7 @@
                 <%= text_field_tag :voucher, params[:voucher], class: 'js-coupon-voucher coupon-field text-center', 'data-validate-url' => validate_coupon_path(@booking.token), placeholder: 'code' %>
                 <span class="js-voucher-status fa"/>
               </div>
-              <%= submit_tag "Confirm", class:"btn btn-primary" %>
+              <%= submit_tag "Confirm", class: 'action-btn' %>
             <% end %>
           <% else %>
             <p class="text-center coupon-expired"><strong><i class="fa fa-times"></i> Your coupon expired </strong></p>
