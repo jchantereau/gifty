@@ -37,7 +37,7 @@
             </span>
           </div>
 
-          <% if  @booking.still_valid %>
+          <% if @booking.still_valid %>
             <div class="text-center">
               </br>
               <span><%= link_to 'Drink it', new_coupon_confirmation_path(@booking.token), class: 'action-btn' %></span>
