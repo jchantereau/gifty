@@ -18,6 +18,13 @@ class BookingsController < ApplicationController
     if @booking.save
       flash.notice = "Your gift has been successfully booked"
       BookingMailer.creation_confirmation(@booking).deliver_now
+      if @booking.friend_phone_number
+        message = "Hi #{@booking.friend_name}, your friend #{@booking.user.name} just offered you a drink.
+Here is the code for the bar tender: #{@booking.voucher}
+Click here: #{coupon_url(@booking.token)} to enjoy it!"
+        blowerio = RestClient::Resource.new(ENV['BLOWERIO_URL'])
+        blowerio['/messages'].post to: "+33#{@booking.friend_phone_number[1..9]}", message: message
+      end
       redirect_to bookings_path
     else
       @gift = @booking.gift
