@@ -12,17 +12,24 @@
 
 .try-btn {
   display: inline-block;
-  background-color: $brand-color;
+  background-color: rgba(250, 250, 250, 0.2);
   color: white;
   font-weight: bold;
   font-size: 20px;
   padding: 10px 15px;
   margin-bottom: 0;
   border-radius: 2px;
-  border: 0px solid;
+  border: 2px solid;
+  border-color: white;
   text-align: center;
   vertical-align: middle;
   min-width: 140px;
+  &:hover {
+    text-decoration: none;
+    color: white;
+    background-color: $brand-color;
+    border-color: $brand-color;
+  }
   }
 
 .action-btn {
