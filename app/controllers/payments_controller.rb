@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
     )
 
     @booking.update(payment: charge.to_json, state: 'paid')
-
+    #envoie email ou sms
     redirect_to booking_path(@booking)
 
   rescue Stripe::CardError => e
