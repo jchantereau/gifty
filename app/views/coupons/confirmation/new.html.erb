@@ -12,7 +12,7 @@
           <span class="coupon-details">
             <p><i class="fa fa-map-marker"></i> <%= link_to @booking.gift.bar.address, "http://maps.google.com/?q=#{@booking.gift.bar.address}", :target => "_blank" %></p>
             <p><i class="fa fa-lock"></i> <%= @booking.voucher %></p>
-            <p><strong>validate until <%= @booking.ends_on %></strong></p>
+            <p><strong>valid until <%= @booking.ends_on.strftime("%d-%m-%y") %></strong></p>
         </div>
 
         <div class="text-center coupon-form">

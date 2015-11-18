@@ -30,7 +30,7 @@
                   <% else %>
                     <dl>
                       <dt><i class="fa fa-times"></i> You did not enjoy it yet !</dt>
-                      <dd>validate until <%= @booking.ends_on %></dd>
+                      <dd>valid until <%= @booking.ends_on.strftime("%d-%m-%y") %></dd>
                     </dl>
                   <% end %>
                 <% end %>
