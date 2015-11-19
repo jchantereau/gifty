@@ -11,9 +11,7 @@ class ApplicationController < ActionController::Base
       @booking.user = current_user
       @booking.save
       session[:booking_id] = nil
-      BookingMailer.creation_confirmation(@booking).deliver_now
-      SmsSender.new(@booking, coupon_url(@booking.token)).send unless @booking.friend_phone_number.blank?
-      bookings_path
+      new_booking_payment_path(@booking)
     else
       super
     end

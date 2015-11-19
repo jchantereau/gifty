@@ -20,7 +20,7 @@
             <div class="coupon">
               <strong class="coupon-title text-center">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
               <span class="coupon-details">
-                <p>Purchased on the <%= booking.created_at.strftime("%d-%m-%y") %> at <%= booking.gift.bar.name %> for <%= booking.gift.price %> €</p>
+                <p>Purchased on the <%= booking.created_at.strftime("%d-%m-%y") %> at <%= booking.gift.bar.name %> for <%= humanized_money(booking.gift.price) %> €</p>
                 <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
                 <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
                 <% if  booking.still_valid == false %>

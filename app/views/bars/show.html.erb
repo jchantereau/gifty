@@ -11,7 +11,7 @@
           <% @bar.gifts.each do |gift| %>
             <div class="radio-button">
               <%= radio_button_tag :gift_id, gift.id %>
-              <%= label_tag :gift_id, "<span class='gift-name'>#{gift.name}</span> <span class='gift-price'>#{gift.price} €</span>".html_safe, for: "gift_id_#{gift.id}" %>
+              <%= label_tag :gift_id, "<span class='gift-name'>#{gift.name}</span> <span class='gift-price'>#{humanized_money(gift.price)} €</span>".html_safe, for: "gift_id_#{gift.id}" %>
             </div>
           <% end %>
           <%= submit_tag "Select", class: "action-btn" %>
