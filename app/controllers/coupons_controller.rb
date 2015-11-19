@@ -1,5 +1,6 @@
 class CouponsController < ApplicationController
   before_action :set_booking
+  skip_before_action :authenticate_user!
 
   def show
     @booking.check_date_validity

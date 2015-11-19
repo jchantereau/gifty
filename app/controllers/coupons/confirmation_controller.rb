@@ -2,6 +2,7 @@ module Coupons
   class ConfirmationController < ApplicationController
     before_action :set_booking
     before_action :check_voucher, only: [:create]
+    skip_before_action :authenticate_user!
 
     def new
       @booking.check_date_validity
