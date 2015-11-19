@@ -1,15 +1,24 @@
-<h1>1 <%= @booking.gift.name %> for <%= @booking.friend_name %></h1>
-<%= form_tag booking_payments_path(@booking) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@booking.amount) %></span>
-    </label>
-  </article>
+<div class="bg-grey bg-height">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-md-4 col-md-offset-4 nopadding">
+      <div class="white-card text-center">
+        <h1>Your drink is almost booked</h1>
+        <h4>1 <%= @booking.gift.name %> for <%= @booking.friend_name %></h4>
+        <%= form_tag booking_payments_path(@booking) do %>
+          <article>
+            <label class="amount">
+              <span>Amount: <%= humanized_money(@booking.amount) %>€</span>
+            </label>
+          </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="<%= @booking.gift_sku %>"
-    data-description="<%= @booking.gift.name %> @ <%= @booking.gift.bar.name %>"
-    data-amount="<%= @booking.amount_cents %>"
-    data-currency="EUR"></script>
-<% end %>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-name="<%= @booking.gift_sku %>"
+            data-description="<%= @booking.gift.name %> @ <%= @booking.gift.bar.name %>"
+            data-amount="<%= @booking.amount_cents %>"
+            data-currency="EUR"></script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

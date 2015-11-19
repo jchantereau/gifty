@@ -25,11 +25,9 @@ class BookingsController < ApplicationController
     @booking.ends_on = Time.now + 90.days
 
     if @booking.save
-      flash.notice = "Your gift has been successfully booked"
       if user_signed_in?
         @booking.user = current_user
-        BookingMailer.creation_confirmation(@booking).deliver_now
-        SmsSender.new(@booking, coupon_url(@booking.token)).send unless @booking.friend_phone_number.blank?
+        @booking.save
         redirect_to new_booking_payment_path(@booking)
       else
         session[:booking_id] = @booking.id
@@ -37,7 +35,7 @@ class BookingsController < ApplicationController
       end
     else
       @gift = @booking.gift
-      flash[:alert] = "Something went wrong with your booking"
+      flash[:alert] = "Something went wrong with your booking, please check if you are logged in"
       render :new
     end
   end
