@@ -1,4 +1,4 @@
-<div class="bg-grey">
+<div class="bg-grey bg-height">
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3">
@@ -18,7 +18,15 @@
           <div class="coupon-container">
           <% @bookings.reverse_order.each do |booking| %>
             <div class="coupon">
-              <strong class="coupon-title text-center">A <%= booking.gift.name %> from <%= booking.user.name %></strong>
+              <% unless booking.user.nil? %>
+                <% unless booking.user.name.blank? %>
+                  <strong class="coupon-title text-center">A <%= booking.gift.name %> from <%= booking.user.name %></strong>
+                <% else %>
+                  <strong class="coupon-title text-center">A <%= booking.gift.name %> from <%= booking.user.email %></strong>
+                <% end %>
+              <% else %>
+                <strong class="coupon-title text-center">A <%= booking.gift.name %></strong>
+              <% end %>
               <span class="coupon-details">
                 <p><i class="fa fa-calendar-o"></i> le <%= booking.created_at.strftime("%d-%m-%y") %></p>
                 <p><i class="fa fa-map-marker"></i> <%= booking.gift.bar.name %></p>
