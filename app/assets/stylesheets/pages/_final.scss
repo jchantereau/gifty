@@ -4,6 +4,8 @@
     font-family: sans-serif;
     background-color: darken($brand-color, 10%);
     text-align: center;
+    height: 100vh;
+
   h1 {
     display: inline-block;
     margin-top: 50px;
@@ -14,14 +16,16 @@
   }
   section {
      background-color: $brand-color;
+     height: 50vh;
   }
 }
 
 #action {
-    margin: 0 auto;
-    width: 700px;
-    position: relative;
-    height: 300px;
+  margin: 0 auto;
+  max-width: 700px;
+  height: 50vh;
+  position: relative;
+  width: 100%;
 
 }
 
@@ -32,7 +36,9 @@
     background-color: #656D78;
     border-right: solid 20px #434A54;
     bottom: 0;
-    left: 310px;
+    left: 0px;
+    right: 0;
+    margin: auto;
 }
 #pipe {
     position: absolute;
@@ -146,6 +152,7 @@
 
 .glass {
     position: absolute;
+    margin: auto;
     height: 100px;
     width: 70px;
     bottom: 0;
@@ -159,14 +166,17 @@
     0% {
         opacity: 0;
         left: 0;
+        right: 0;
     }
     20%, 80% {
         opacity: 1;
-        left: 300px;
+        left: 0;
+        right: 0;
     }
     100% {
          opacity: 0;
-        left: 600px;
+        left: 0;
+        right: 0;
     }
 }
 
