@@ -4,10 +4,10 @@
     <h1>Offer a drink to your friends </br> in a few clicks</h1>
     </br>
     <% if user_signed_in? %>
-      <%= link_to "OFFER A DRINK", cities_path, class: "try-btn" %>
+      <%= link_to "OFFER A DRINK", cities_path, class: "home-btn" %>
     <% else %>
       <!-- Button trigger modal -->
-      <button type="button" class="try-btn" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="home-btn" data-toggle="modal" data-target="#myModal">
         TRY IT
       </button>
     <% end %>
