@@ -1,50 +1,48 @@
 <div class="bg-grey bg-height">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12 col-md-6 col-md-offset-3">
-        <% if @bookings.empty? %>
-          <div class="white-card text-center">
-            <h2>Your friends' beer is empty :(</h2>
-            <br>
-            <br>
-            <br>
-            <p><%= image_tag 'cheers.png' %></p>
-            <br>
-            <br>
-            <br>
-            <p class="text-center"><%= link_to 'Offer a drink', cities_path, class: 'action-btn' %></p>
-          </div>
-        <% else %>
-          <div class="coupon-container">
-          <% @bookings.reverse_order.each do |booking| %>
-            <div class="coupon">
-              <strong class="coupon-title text-center">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
-              <span class="coupon-details">
-                <p>Purchased on the <%= booking.created_at.strftime("%d-%m-%y") %> at <%= booking.gift.bar.name %> for <%= booking.gift.price %> €</p>
-                <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
-                <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
-                <% if  booking.still_valid == false %>
-                  <% if booking.complete %>
-                    <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
-                  <% else %>
-                    <p class="coupon-expired"><strong><i class="fa fa-times"></i> The coupon expired </strong></p>
-                  <% end %>
+    <div class="col-xs-12 col-md-6 col-md-offset-3 nopadding">
+      <% if @bookings.empty? %>
+        <div class="white-card text-center">
+          <h2>Your friends' beer is empty :(</h2>
+          <br>
+          <br>
+          <br>
+          <p><%= image_tag 'cheers.png' %></p>
+          <br>
+          <br>
+          <br>
+          <p class="text-center"><%= link_to 'Offer a drink', cities_path, class: 'action-btn' %></p>
+        </div>
+      <% else %>
+        <div class="coupon-container">
+        <% @bookings.reverse_order.each do |booking| %>
+          <div class="coupon">
+            <strong class="coupon-title text-center">A <%= booking.gift.name %> for <%= booking.friend_name %></strong>
+            <span class="coupon-details">
+              <p>Purchased on the <%= booking.created_at.strftime("%d-%m-%y") %> at <%= booking.gift.bar.name %> for <%= booking.gift.price %> €</p>
+              <p><i class="fa fa-envelope-o"></i> </i> "<%= booking.message %>"</p>
+              <p><i class="fa fa-lock"></i> <%= booking.voucher %> - <%= booking.token %></p>
+              <% if  booking.still_valid == false %>
+                <% if booking.complete %>
+                  <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
                 <% else %>
-                  <% if booking.complete %>
-                    <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
-                  <% else %>
-                    <dl>
-                      <dt><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</dt>
-                      <p><dd>Valid until <%= booking.ends_on.strftime("%d-%m-%y") %></dd></p>
-                    </dl>
-                  <% end %>
+                  <p class="coupon-expired"><strong><i class="fa fa-times"></i> The coupon expired </strong></p>
                 <% end %>
-              </span>
-            </div>
-          <% end %>
+              <% else %>
+                <% if booking.complete %>
+                  <p class="coupon-complete"><i class="fa fa-check"></i> <%= booking.friend_name %> already enjoyed it !</p>
+                <% else %>
+                  <dl>
+                    <dt><i class="fa fa-times"></i> <%= booking.friend_name %> did not enjoy it yet !</dt>
+                    <p><dd>Valid until <%= booking.ends_on.strftime("%d-%m-%y") %></dd></p>
+                  </dl>
+                <% end %>
+              <% end %>
+            </span>
           </div>
         <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
