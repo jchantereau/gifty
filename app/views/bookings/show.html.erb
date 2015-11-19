@@ -1,14 +1,16 @@
-<div class="bg-grey bg-height">
+<div class="bg-height">
   <div class="container-fluid">
     <div class="col-xs-12 col-md-4 col-md-offset-4 nopadding">
       <div class="coupon-container">
-        <h3>Your order for <%= @booking.friend_name %></h3>
         <div class="coupon">
-        <ul>
-          <li>Status: <%= @booking.state %></li>
-          <li>Item: <%= @booking.gift.name %></li>
-          <li>Amount: <%= humanized_money(@booking.amount) %>€</li>
-        <ul>
+          <strong class="coupon-title text-center">Your order for <%= @booking.friend_name %></strong>
+          <span class="coupon-details">
+            <ul>
+              <li>Status: <%= @booking.state %></li>
+              <li>Item: <%= @booking.gift.name %></li>
+              <li>Amount: <%= humanized_money(@booking.amount) %>€</li>
+            <ul>
+          </span>
         </div>
       </div>
     </div>
