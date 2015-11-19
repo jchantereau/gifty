@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
 
     @booking.update(payment: charge.to_json, state: 'paid')
     flash.notice = "Your gift has been successfully booked"
-    BookingMailer.creation_confirmation(@booking).deliver_now
+    BookingMailer.creation_confirmation(@booking).deliver_now unless @booking.friend_email.blank?
     SmsSender.new(@booking, coupon_url(@booking.token)).send unless @booking.friend_phone_number.blank?
     redirect_to booking_path(@booking)
 
