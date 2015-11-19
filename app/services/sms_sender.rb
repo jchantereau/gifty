@@ -6,11 +6,9 @@ class SmsSender
   end
 
   def send
-    message = "Hi #{@booking.friend_name}, your friend #{@booking.user.name} just offered you a drink.
-Here is the code for the bar tender: #{@booking.voucher}
-Click here: #{@coupon_url} to enjoy it!"
+    message = "Hi #{@booking.friend_name}, your received a drink. Click here: #{@coupon_url}"
     blowerio = RestClient::Resource.new(ENV['BLOWERIO_URL'])
-    blowerio['/messages'].post to: "+33#{@booking.friend_phone_number[1..9]}", message: message
+    blowerio['messages'].post(to: "+33#{@booking.friend_phone_number[1..9]}", message: message)
   end
 
 end
