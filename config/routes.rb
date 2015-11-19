@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   get 'gifts' => "bookings#gifts_received"
+  get 'final' => "pages#final"
 
   # namespace :partners do
   #   resources :bookings, only: [ :show, :index ]
