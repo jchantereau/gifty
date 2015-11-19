@@ -14,7 +14,7 @@ module Coupons
         @booking.complete = true
         if @booking.save
           flash[:notice] = "Voucher used!"
-          redirect_to root_path
+          redirect_to final_path
         else
           flash[:alert] = "Unable to use voucher."
           render :new
