@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
       currency:     'eur'
     )
 
-    @booking.save
+    @booking.user = current_user
     @booking.update(payment: charge.to_json, state: 'paid')
     flash.notice = "Your gift has been successfully booked"
     BookingMailer.creation_confirmation(@booking).deliver_now unless @booking.friend_email.blank?
