@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  # before_action :coming_soon!
 
 
   def after_sign_in_path_for(resource)
@@ -17,4 +18,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
+  def coming_soon!
+    unless controller_name == "pages" && action_name == "coming_soon"
+      redirect_to coming_soon_path
+    end
+  end
 end

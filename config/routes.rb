@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'gifts' => "bookings#gifts_received"
   get 'final' => "pages#final"
+  get 'coming_soon' => 'pages#coming_soon'
 
   # namespace :partners do
   #   resources :bookings, only: [ :show, :index ]
