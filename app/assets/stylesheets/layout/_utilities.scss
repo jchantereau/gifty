@@ -29,6 +29,24 @@
     background-color: rgba(58, 146, 230, 0.8);
     border-color: $brand-color;
   }
+  &-small {
+    display: inline-block;
+    background-color: rgba(58, 146, 230, 0.9);
+    color: white !important;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    border-radius: 2px;
+    border: 0px solid;
+    text-align: center;
+    &:hover {
+      text-decoration: none;
+      color: white;
+      background-color: rgba(58, 146, 230, 0.8);
+      border-color: $brand-color;
+    }
+  }
 }
 
 .action-btn {

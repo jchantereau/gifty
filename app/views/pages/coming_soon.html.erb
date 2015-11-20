@@ -1,1 +1,19 @@
-<h1>Hey coming soon !</h1>
+<div class="banner banner-landing" style="background-image: url('https://static.pexels.com/photos/8859/drink-beer.jpg ')">
+  <div class="banner-gradient"></div>
+    <div class="banner-content text-center banner-landing">
+      <p><%= image_tag 'logo-white.png' %></p>
+      <h1>Coming Soon...</h1>
+      <h2>Offer a drink to your friends </br> in a few clicks</h2>
+      </br>
+      <p>Be the first to be informed when released</p>
+      <form action="//formspree.io/jchantereau@gmail.com"
+            method="POST">
+        <input type="email", name="_replyto", placeholder="john@doe.com">
+  <!--       <input type="hidden" name="_next" value="<%= link_to final_path %>" />
+   -->
+        <input type="hidden" name="_cc" value="thomas.joet.fr@gmail.com" />
+        <input type="submit" value="Submit" class="home-btn-small">
+      </form>
+    </div>
+  </div>
+</div>
